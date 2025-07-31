@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dado Virtual Interactivo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background: #f0f0f0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #dado {
+      width: 120px;
+      height: 120px;
+      background: white;
+      font-size: 60px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s ease;
+      user-select: none;
+    }
+    #dado:active {
+      transform: scale(0.95) rotate(15deg);
+    }
+  </style>
+</head>
+<body>
+  <div id="dado">🎲</div>
+
+  <script>
+    const dado = document.getElementById("dado");
+
+    function lanzarDado() {
+      const numero = Math.floor(Math.random() * 6) + 1;
+      dado.textContent = numero;
+      dado.style.transform = `rotate(${Math.random() * 360}deg) scale(1.1)`;
+      setTimeout(() => {
+        dado.style.transform = `scale(1)`;
+      }, 200);
+    }
+
+    // Click y toque
+    dado.addEventListener("click", lanzarDado);
+    dado.addEventListener("touchstart", lanzarDado);
+  </script>
+</body>
+</html>
